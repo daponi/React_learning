@@ -2,6 +2,7 @@
 # Compiled class file
 *.class
 .idea
+.vscode
 dist/
 .git
 

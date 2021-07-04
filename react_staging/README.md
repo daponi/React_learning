@@ -49,11 +49,11 @@
 						一般组件：写组件标签时传递了什么，就能收到什么
 						路由组件：接收到三个固定的属性
 											history:
-														go: ƒ go(n)
+														go: ƒ go(n)  //n为正数是前进n步，为负数时后退n步，为0是刷新
 														goBack: ƒ goBack()
 														goForward: ƒ goForward()
-														push: ƒ push(path, state)
-														replace: ƒ replace(path, state)
+														push: ƒ push(path, [state])
+														replace: ƒ replace(path, [state])
 											location:
 														pathname: "/about"
 														search: ""
@@ -122,13 +122,13 @@
 ## 十三、BrowserRouter与HashRouter的区别
 			1.底层原理不一样：
 						BrowserRouter使用的是H5的history API，不兼容IE9及以下版本。
-						HashRouter使用的是URL的哈希值。
+						HashRouter使用的是URL的哈希值,#号后面的不发送给服务器即不认为是请求资源的路径但能形成历史记录
 			2.path表现形式不一样
 						BrowserRouter的路径中没有#,例如：localhost:3000/demo/test
 						HashRouter的路径包含#,例如：localhost:3000/#/demo/test
 			3.刷新后对路由state参数的影响
 						(1).BrowserRouter没有任何影响，因为state保存在history对象中。
-						(2).HashRouter刷新后会导致路由state参数的丢失！！！
+						(2).HashRouter刷新后会导致路由state参数的丢失，因为它没用history API
 			4.备注：HashRouter可以用于解决一些路径错误相关的问题。
 
 ## 十四、antd的按需引入+自定主题
