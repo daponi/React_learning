@@ -15,7 +15,7 @@ import {connect} from 'react-redux'
 	2.返回的对象中的key就作为传递给UI组件props的key,value就作为传递给UI组件props的value
 	3.mapStateToProps用于传递状态
 */
-function mapStateToProps(state){
+function mapStateToProps(state){ //参数是底层传的store.getState
 	return {count:state}
 }
 
@@ -24,7 +24,7 @@ function mapStateToProps(state){
 	2.返回的对象中的key就作为传递给UI组件props的key,value就作为传递给UI组件props的value
 	3.mapDispatchToProps用于传递操作状态的方法
 */
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch){//参数是底层传的store.dispatch
 	return {
 		jia:number => dispatch(createIncrementAction(number)),
 		jian:number => dispatch(createDecrementAction(number)),

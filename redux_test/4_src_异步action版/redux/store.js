@@ -8,5 +8,9 @@ import {createStore,applyMiddleware} from 'redux'
 import countReducer from './count_reducer'
 //引入redux-thunk，用于支持异步action
 import thunk from 'redux-thunk'
+
+// //暴露的store对象
+// const store =createStore(countReducer)
+
 //暴露store
 export default createStore(countReducer,applyMiddleware(thunk))

@@ -30,13 +30,14 @@
 
 ## 3.求和案例_redux异步action版
 		 (1).明确：延迟的动作不想交给组件自身，想交给action
+		无论是数组还是数值都不能开启异步任务，则异步只能用函数开启
 		 (2).何时需要异步action：想要对状态进行操作，但是具体的数据靠异步任务返回。
 		 (3).具体编码：
 		 			1).yarn add redux-thunk，并配置在store中
 		 			2).创建action的函数不再返回一般对象，而是一个函数，该函数中写异步任务。
 		 			3).异步任务有结果后，分发一个同步的action去真正操作数据。
 		 (4).备注：异步action不是必须要写的，完全可以自己等待异步任务的结果了再去分发同步action。
-
+	异步action，就是指action的值为函数,异步action中一般都会调用同步action，异步action不是必须要用的，看你需求。
 
 
 
@@ -50,11 +51,35 @@
 								-mapStateToProps:映射状态，返回值是一个对象
 								-mapDispatchToProps:映射操作状态的方法，返回值是一个对象
 			(3).备注1：容器组件中的store是靠props传进去的，而不是在容器组件中直接引入
-			(4).备注2：mapDispatchToProps，也可以是一个对象
+			```
+						<div>
+				{/* 给容器组件传递store */}
+				<Count store={store} />
+			</div>
+			(4).备注2：mapDispatchToProps，也可以是一个对象，参数会自动转进去，react-redux底层会自动dispatch
+			```
+			export default connect(
+	state => ({count:state}),
+
+	//mapDispatchToProps的一般写法
+	/* dispatch => ({
+		jia:number => dispatch(createIncrementAction(number)),
+		jian:number => dispatch(createDecrementAction(number)),
+		jiaAsync:(number,time) => dispatch(createIncrementAsyncAction(number,time)),
+	}) */
+
+	//mapDispatchToProps的简写
+	{
+		jia:createIncrementAction,
+		jian:createDecrementAction,
+		jiaAsync:createIncrementAsyncAction,
+	}
+)(Count)
+
 
 
 ## 5.求和案例_react-redux优化
-			(1).容器组件和UI组件整合一个文件
+			(1).容器组件和UI组件整合一个文件,这个文件可以放containers或components文件夹下
 			(2).无需自己给容器组件传递store，给<App/>包裹一个<Provider store={store}>即可。
 			(3).使用了react-redux后也不用再自己检测redux中状态的改变了，容器组件可以自动完成这个工作。
 			(4).mapDispatchToProps也可以简单的写成一个对象
@@ -80,6 +105,7 @@
 			(1).yarn add redux-devtools-extension
 			(2).store中进行配置
 					import {composeWithDevTools} from 'redux-devtools-extension'
+					//将composeWithDevTools作为createStore()的第二个参数传进去，若原第二个参数是异步参数applyMiddleware(thunk))则把异步参数传到它这
 					const store = createStore(allReducer,composeWithDevTools(applyMiddleware(thunk)))
 
 ## 8.求和案例_react-redux最终版
