@@ -18,6 +18,8 @@ dist/
 # Package Files #
 /node_modules
 node_modules/
+build/
+/build
 *.umi
 *.jar
 *.war
@@ -31,4 +33,5 @@ node_modules/
 hs_err_pid*
 
 package-lock.json
+
 

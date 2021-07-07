@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './index.css'
 
-//创建Context对象
+//创建Context对象,创建在通信组件的外层
 const MyContext = React.createContext()
 const {Provider,Consumer} = MyContext
 export default class A extends Component {
@@ -34,10 +34,12 @@ class B extends Component {
 }
 
 /* class C extends Component {
-	//声明接收context
+	//声明接收context,用于接收context
 	static contextType = MyContext
 	render() {
 		const {username,age} = this.context
+		console.log(this);
+		console.log(MyContext);
 		return (
 			<div className="grand">
 				<h3>我是C组件</h3>
@@ -47,6 +49,7 @@ class B extends Component {
 	}
 } */
 
+// 函数式组件
 function C(){
 	return (
 		<div className="grand">

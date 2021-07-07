@@ -9,6 +9,7 @@ import ReactDOM from 'react-dom'
 	myRef = React.createRef()
 
 	add = ()=>{
+		//setState不写对象写函数，里面的可有state参数
 		this.setState(state => ({count:state.count+1}))
 	}
 

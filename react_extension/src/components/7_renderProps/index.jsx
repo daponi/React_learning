@@ -8,6 +8,7 @@ export default class Parent extends Component {
 			<div className="parent">
 				<h3>我是Parent组件</h3>
 				<A render={(name)=><C name={name}/>}/>
+				<A render={(name)=><B name={name}/>}/>
 			</div>
 		)
 	}
@@ -29,6 +30,7 @@ class A extends Component {
 
 class B extends Component {
 	render() {
+		console.log("B: ",this);
 		console.log('B--render');
 		return (
 			<div className="b">

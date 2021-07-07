@@ -17,9 +17,10 @@ export default class Parent extends PureComponent {
 	changeCar = ()=>{
 		//this.setState({carName:'迈巴赫'})
 
-		const obj = this.state
+		const obj = this.state //obj是引用了this.state的地址，指的同一块空间
 		obj.carName = '迈巴赫'
-		console.log(obj === this.state);
+		console.log(obj === this.state);//true，它们内存地址相同为true，只是栈里内容改变了
+		//state改变时react是进行浅比较，只当对象的内存地址不同才渲染页面，所以上面的改变不进行渲染
 		this.setState(obj)
 	}
 
