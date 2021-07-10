@@ -32,10 +32,11 @@ app.start('#root');
  * <a href="#hello">Hello</a>
  * #hello
  * 
+ * //history的API
  * https://developer.mozilla.org/zh-CN/docs/Web/API/History_API
  * https://bestvpn.org/history/first
  * 
- * 
+ * //老师博客：了解Hook
  * http://iwenwiki.com/blog/?p=58
  * 
  * http://iwenwiki.com/blog/?p=38
