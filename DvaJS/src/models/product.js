@@ -19,6 +19,7 @@ export default {
         }
     },
 
+    //异步
     effects: {
         *updateListAsync({ payload }, { call, put }) {  // eslint-disable-line
             yield put({
@@ -38,6 +39,8 @@ export default {
             }
         }
     },
+
+    //监听
     subscriptions: {
         setup({ dispatch, history }) {  // eslint-disable-line
             const currentProduct = {

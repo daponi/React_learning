@@ -17,6 +17,7 @@ const app = dva({
 // 3. Model
 // app.model(require('./models/example').default);
 // app.model(require("./models/product").default);
+//遍历JS文件，取出所有需要的Model文件
 require("./models").default.forEach(key => app.model(key.default));
 
 // 4. Router

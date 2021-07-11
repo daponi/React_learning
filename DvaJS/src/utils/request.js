@@ -22,6 +22,7 @@ function handleHeaders(options) {
   };
   options.headers = Object.assign({}, defaultHeaders, headers);
 
+//增加的post请求的方案
   if (options.method === 'post') {
     var body = options.body ? options.body : {};
     body = qs.stringify(body);
