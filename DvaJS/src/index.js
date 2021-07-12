@@ -4,6 +4,7 @@ import './index.css';
 import { createBrowserHistory as createHistory } from "history"
 
 // 1. Initialize
+//切换 history 为 browserHistory
 const app = dva({
   history: createHistory(),
 });
@@ -22,8 +23,10 @@ require("./models").default.forEach(key => app.model(key.default));
 
 // 4. Router
 app.router(require('./router').default);
-// console.log(require('./router'));
+/// console.log(require('./router'));
+//这是换一种写法
 // app.router(Router);
+// console.log(Router);
 
 // 5. Start
 app.start('#root');
